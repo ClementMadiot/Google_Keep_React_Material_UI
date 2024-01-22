@@ -1,25 +1,11 @@
 import * as React from 'react';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
+import {Toolbar, Typography, IconButton} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import AppBar from '@mui/material/AppBar';
-// import { styled, useTheme} from '@mui/material/styles';
-// import Box from '@mui/material/Box';
-// import MuiDrawer from '@mui/material/Drawer';
-// import List from '@mui/material/List';
-// import CssBaseline from '@mui/material/CssBaseline';
-// import Divider from '@mui/material/Divider';
-// import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-// import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 
-
-
-
-const HeaderBar = ({ open, handleDrawer, AppBar }) => {
+const HeaderBar = ({ open, handleDrawer, Header }) => {
   return (
-    <AppBar position="fixed" open={open}>
+    <Header open={open}>
     <Toolbar>
       <IconButton
         color="inherit"
@@ -37,7 +23,7 @@ const HeaderBar = ({ open, handleDrawer, AppBar }) => {
         Mini variant drawer
       </Typography>
     </Toolbar>
-  </AppBar>
+  </Header>
   );
 };
 

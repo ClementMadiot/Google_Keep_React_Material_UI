@@ -1,17 +1,12 @@
 import * as React from 'react';
-import { styled, useTheme} from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
-import IconButton from '@mui/material/IconButton';
+import { styled, IconButton, Box, AppBar,Drawer} from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 // Components
 import HeaderBar from './HeaderBar';
 import NavList from './NavList';
 
-const drawerWidth = 240;
+const drawerWidth = 180;
 
 const openedMixin = (theme ) => ({
   width: drawerWidth,
@@ -44,7 +39,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 
-const AppBar = styled(MuiAppBar, {
+const Header = styled(AppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
@@ -62,12 +57,13 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+const MuiDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
-    width: drawerWidth,
+    // width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
+    padding: 0,
     ...(open && {
       ...openedMixin(theme),
       '& .MuiDrawer-paper': openedMixin(theme),
@@ -80,32 +76,27 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const SwipeDrawer = () => {
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleDrawer = () => {
+    setOpen(prevState => !prevState);
   };
 
   return (
     <Box sx={{ display: 'flex' }}>
       <HeaderBar
-      AppBar={AppBar}
+      Header={Header}
       open={open}
-      handleDrawer={handleDrawerOpen}
+      handleDrawer={handleDrawer}
       />
-      <Drawer variant="permanent" open={open}>
+      <MuiDrawer variant="permanent" open={open}>
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+          <IconButton onClick={handleDrawer}>
+            <ChevronLeftIcon/>
           </IconButton>
         </DrawerHeader>
       <NavList/>
-      </Drawer>
+      </MuiDrawer>
     </Box>
   );
 }
