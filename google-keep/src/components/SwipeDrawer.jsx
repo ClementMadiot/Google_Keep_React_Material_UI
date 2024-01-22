@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { styled} from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MuiDrawer from '@mui/material/Drawer';
+import { styled } from '@mui/material/styles';
+import {Box, Drawer as MuiDrawer} from '@mui/material';
 
 // Components
 import HeaderBar from './HeaderBar';
 import NavList from './NavList';
 
-const drawerWidth = 240;
+const drawerWidth = 210;
 
 const openedMixin = (theme ) => ({
   width: drawerWidth,
