@@ -1,23 +1,20 @@
 import React from 'react';
 import {List, ListItem, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
-import {MoveToInbox, Mail} from '@mui/icons-material';
+import { NavListData } from './Data/NavListData';
 
 
 const NavList = () => {
   return (
     <List>
-    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-      <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-        <ListItemButton
-          button key={text}>
-          <ListItemIcon>
-            {index % 2 === 0 ? <MoveToInbox /> : <Mail />}
-          </ListItemIcon>
-          <ListItemText primary={text}/>
+    {NavListData.map(list => (
+      <ListItem disablePadding sx={{ display: 'block' }} key={list.id}>
+        <ListItemButton button>
+          <ListItemIcon>{list.icon}</ListItemIcon>
+          <ListItemText primary={list.name}/>
         </ListItemButton>
       </ListItem>
     ))}
-  </List>
+    </List>
   );
 };
 

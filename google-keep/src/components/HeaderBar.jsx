@@ -19,9 +19,7 @@ const HeaderBar = ({ open, handleDrawer, Header }) => {
       >
         <MenuIcon />
       </IconButton>
-      <Typography variant="h6" noWrap component="div">
-        Mini variant drawer
-      </Typography>
+      <Typography variant="h6" noWrap component="div"></Typography>
     </Toolbar>
   </Header>
   );
