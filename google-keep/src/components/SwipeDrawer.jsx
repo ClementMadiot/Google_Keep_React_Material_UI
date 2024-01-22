@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, IconButton, Box, AppBar,Drawer} from '@mui/material';
+import { styled, IconButton, Box, AppBar, Drawer} from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 // Components
@@ -23,9 +23,9 @@ const closedMixin = (theme) => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
-  width: `calc(${theme.spacing(7)} + 1px)`,
+  // width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+    width: `calc(${theme.spacing(8)} + 9px)`,
   },
 });
 
@@ -33,7 +33,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
-  padding: theme.spacing(0, 1),
+  // padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
 }));
 
@@ -59,7 +59,7 @@ const Header = styled(AppBar, {
 
 const MuiDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
-    // width: drawerWidth,
+    width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
