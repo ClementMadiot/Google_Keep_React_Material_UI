@@ -20,12 +20,12 @@ const HeaderBar = ({ open, handleDrawer }) => {
     <Header open={open}>
     <Toolbar>
       <IconButton
-        color="inherit"
         onClick={handleDrawer}
         sx={{
           padding: 0,
-          ...(open && { display: 'none' }),
+          marginRight: '20px'
         }}>
+      <Menu/>
       </IconButton>
       <img src={GoogleKeepLogo} alt='Logo Google Keep' />
       <Keep>Keep</Keep>

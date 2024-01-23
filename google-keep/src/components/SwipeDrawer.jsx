@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { styled,Box, AppBar, Drawer} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import {Box, Drawer as MuiDrawer} from '@mui/material';
 
 // Components
 import HeaderBar from './HeaderBar';
 import NavList from './NavList';
 
-const drawerWidth = 240;
+const drawerWidth = 210;
 
 const openedMixin = (theme ) => ({
   width: drawerWidth,
@@ -22,9 +23,9 @@ const closedMixin = (theme) => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
-  // width: `calc(${theme.spacing(7)} + 1px)`,
+  width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 9px)`,
+    width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
 
@@ -32,37 +33,17 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
-  // padding: theme.spacing(0, 1),
+  padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
 }));
 
 
-
-const Header = styled(AppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const MuiDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
-    padding: 0,
     ...(open && {
       ...openedMixin(theme),
       '& .MuiDrawer-paper': openedMixin(theme),
@@ -81,17 +62,17 @@ const SwipeDrawer = () => {
     setOpen(prevState => !prevState);
   };
 
+
   return (
     <Box sx={{ display: 'flex' }}>
       <HeaderBar
-      Header={Header}
       open={open}
       handleDrawer={handleDrawer}
       />
-      <MuiDrawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open}>
         <DrawerHeader></DrawerHeader>
-      <NavList/>
-      </MuiDrawer>
+        <NavList/>
+      </Drawer>
     </Box>
   );
 }
