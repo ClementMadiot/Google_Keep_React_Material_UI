@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { styled, IconButton, Box, AppBar, Drawer} from '@mui/material';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import { styled,Box, AppBar, Drawer} from '@mui/material';
 
 // Components
 import HeaderBar from './HeaderBar';
 import NavList from './NavList';
 
-const drawerWidth = 180;
+const drawerWidth = 240;
 
 const openedMixin = (theme ) => ({
   width: drawerWidth,
@@ -90,11 +89,7 @@ const SwipeDrawer = () => {
       handleDrawer={handleDrawer}
       />
       <MuiDrawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawer}>
-            <ChevronLeftIcon/>
-          </IconButton>
-        </DrawerHeader>
+        <DrawerHeader></DrawerHeader>
       <NavList/>
       </MuiDrawer>
     </Box>

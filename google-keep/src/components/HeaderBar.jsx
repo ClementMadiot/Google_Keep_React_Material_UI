@@ -1,25 +1,34 @@
 import * as React from 'react';
-import {Toolbar, IconButton} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import {AppBar, Toolbar, Typography, IconButton, styled} from '@mui/material';
+import {Menu} from '@mui/icons-material';
+import GoogleKeepLogo from '../images/google-keep-icon.png'
 
+const Header = styled(AppBar)`
+  z-index: 1201;
+  background-color: #fff;
+  height: 70px;
+  box-shadow: inset 0 -1px 0 0 #dadce0;
+`
+const Keep = styled(Typography)`
+  color: #5F6368;
+  font-size: 24px;
+  margin-left: 25px;
+`
 
-const HeaderBar = ({ open, handleDrawer, Header }) => {
+const HeaderBar = ({ open, handleDrawer }) => {
   return (
     <Header open={open}>
-    <Toolbar sx={{
-          backgroundColor: '#2a2a2af7',
-        }}>
+    <Toolbar>
       <IconButton
         color="inherit"
         onClick={handleDrawer}
         sx={{
           padding: 0,
           ...(open && { display: 'none' }),
-        }}
-      >
-        <MenuIcon />
+        }}>
       </IconButton>
-      {/* <Typography></Typography> */}
+      <img src={GoogleKeepLogo} alt='Logo Google Keep' />
+      <Keep>Keep</Keep>
     </Toolbar>
   </Header>
   );
