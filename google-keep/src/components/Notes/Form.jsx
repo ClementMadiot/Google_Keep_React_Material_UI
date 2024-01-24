@@ -1,7 +1,10 @@
-import { useState } from 'react'
+import { useState, useRef, useContext } from 'react'
 
 import {Box, TextField, ClickAwayListener  } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { v4 as uuid } from 'uuid'
+
+import { DataContext } from '../Context/DataProvider';
 
 const Container = styled(Box)`
   display: flex;
@@ -12,28 +15,54 @@ const Container = styled(Box)`
   border-radius: 8px;
   border-color: #e0e0e0;
   margin: auto;
+  min-height: 30px;
 `
 
+const note = {
+  id: '',
+  heading: '',
+  text: '',
+}
 const Form = () => {
 
   const [showTextField, setshowTextField] = useState(false);
+  const [addNote, setAddNote] = useState({...note, id: uuid() })
+
+  const { setNotes }= useContext(DataContext);
+  const containerRef = useRef();
 
   const onTextAreaClick = () => {
     setshowTextField(true)
+    containerRef.current.style.minHeight = '70px'
   }
   const handleClickAway = () => {
     setshowTextField(false)
+    containerRef.current.style.minHeight = '30px'
+
+    setAddNote({ ...note, id: uuid() })
+    if (addNote.heading || addNote.text) {
+      setNotes(prevArr => [addNote, ...prevArr]);
+    }
+  }
+
+  const onTextChange = (e) => {
+    // console.log(e.target.name, e.target.value);
+    let changedNote = { ...addNote, [e.target.name] : e.target.value }
+    setAddNote(changedNote);
   }
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
-      <Container>
+      <Container ref={containerRef}>
         { showTextField && 
           <TextField
           placeholder='Title'
           variant='standard'
           InputProps={{ disableUnderline: true }}
-          style={{marginBottom: 10}}    
+          style={{marginBottom: 10}}
+          onChange={(e) => onTextChange(e)} 
+          name='heading'
+          value={addNote.heading}   
           />
         }
         <TextField
@@ -43,6 +72,9 @@ const Form = () => {
         variant='standard'
         InputProps={{disableUnderline: true}}
         onClick={onTextAreaClick}
+        onChange={(e) => onTextChange(e)} 
+        name='text' 
+        value={addNote.text}    
         />
       </Container>
     </ClickAwayListener>

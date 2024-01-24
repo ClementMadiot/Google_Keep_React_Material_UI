@@ -5,7 +5,6 @@ import "../styles/index.css";
 import SwipeDrawer from './SwipeDrawer';
 import Notes from './Notes/Notes';
 
-
 const Home = () => {
   return (
     <Box>
