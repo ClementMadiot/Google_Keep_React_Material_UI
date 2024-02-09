@@ -14,9 +14,9 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
 }))
 
-const SectionNotes = styled(Box)`
-  margin: 8px 180px;
-`
+// const SectionNotes = styled(Box)`
+//   margin: 8px 180px;
+// `
 
 const Notes = () => {
   const { notes } = useContext(DataContext)
@@ -26,7 +26,7 @@ const Notes = () => {
       <Box component="section" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Form />
-        <SectionNotes key={notes} component="section">
+        {/* <SectionNotes key={notes} component="section"> */}
           {notes.length > 0 ? (
             <Grid container style={{ marginTop: 16 }}>
               {notes.map((note) => (
@@ -38,7 +38,7 @@ const Notes = () => {
           ) : (
             <EmptyNotes />
           )}
-        </SectionNotes>
+        {/* </SectionNotes> */}
       </Box>
     </Box>
   )

@@ -1,26 +1,21 @@
-import React from 'react'
-import {
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material'
-import { NavListData } from '../Data/NavListData'
+import React from 'react';
+import {List, ListItem, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
+import { NavListData } from '../Data/NavListData';
+
 
 const NavList = () => {
   return (
     <List>
-      {NavListData.map((list) => (
-        <ListItem disablePadding sx={{ display: 'block' }} key={list.id}>
-          <ListItemButton button="true" sx={{ paddingLeft: '1.5rem' }}>
-            <ListItemIcon>{list.icon}</ListItemIcon>
-            <ListItemText primary={list.name} />
-          </ListItemButton>
-        </ListItem>
-      ))}
+    {NavListData.map(list => (
+      <ListItem disablePadding key={list.id}>
+        <ListItemButton button='true' sx={{ paddingLeft: '1.5rem' }}>
+          <ListItemIcon>{list.icon}</ListItemIcon>
+          <ListItemText primary={list.name}/>
+        </ListItemButton>
+      </ListItem>
+    ))}
     </List>
-  )
-}
+  );
+};
 
-export default NavList
+export default NavList;

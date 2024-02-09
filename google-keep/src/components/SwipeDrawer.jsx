@@ -5,7 +5,7 @@ import {Box, styled, Drawer as MuiDrawer} from '@mui/material';
 import HeaderBar from './HeaderBar';
 import NavList from './NavList';
 
-const drawerWidth = 180;
+const drawerWidth = 210;
 
 const openedMixin = (theme ) => ({
   width: drawerWidth,
@@ -24,23 +24,21 @@ const closedMixin = (theme) => ({
   overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 9px)`,
+    width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
 
 const DrawerHeader = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
 }));
 
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
-    // width: drawerWidth,
+    width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
-    // padding: 0,
     ...(open && {
       ...openedMixin(theme),
       '& .MuiDrawer-paper': openedMixin(theme),
