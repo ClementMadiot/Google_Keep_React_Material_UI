@@ -3,13 +3,11 @@ import "../styles/index.css";
 
 /// Components
 import SwipeDrawer from './SwipeDrawer';
-import Notes from './Notes/Notes';
 
 const Home = () => {
   return (
     <Box>
     <SwipeDrawer />
-    <Notes />
     </Box>
   );
 };

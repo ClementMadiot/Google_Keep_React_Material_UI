@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {Box, styled, Drawer as MuiDrawer} from '@mui/material';
 
+
 // Components
 import HeaderBar from './HeaderBar';
 import NavList from './NavList';
+import Notes from './Notes/Notes';
 
 const drawerWidth = 210;
 
@@ -71,6 +73,7 @@ const SwipeDrawer = () => {
         <DrawerHeader></DrawerHeader>
         <NavList/>
       </Drawer>
+      <Notes />
     </Box>
   );
 }
