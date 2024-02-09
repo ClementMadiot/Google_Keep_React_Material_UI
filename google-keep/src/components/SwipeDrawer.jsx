@@ -1,12 +1,11 @@
 import * as React from 'react';
-// import { styled } from '@mui/material/styles';
 import {Box, styled, Drawer as MuiDrawer} from '@mui/material';
 
 // Components
 import HeaderBar from './HeaderBar';
 import NavList from './NavList';
 
-const drawerWidth = 210;
+const drawerWidth = 180;
 
 const openedMixin = (theme ) => ({
   width: drawerWidth,
@@ -25,21 +24,23 @@ const closedMixin = (theme) => ({
   overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+    width: `calc(${theme.spacing(8)} + 9px)`,
   },
 });
 
 const DrawerHeader = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
 }));
 
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
-    width: drawerWidth,
+    // width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
+    // padding: 0,
     ...(open && {
       ...openedMixin(theme),
       '& .MuiDrawer-paper': openedMixin(theme),
@@ -65,7 +66,10 @@ const SwipeDrawer = () => {
       open={open}
       handleDrawer={handleDrawer}
       />
-      <Drawer variant="permanent" open={open}>
+      <Drawer 
+      variant="permanent" 
+      open={open} 
+      component="article">
         <DrawerHeader></DrawerHeader>
         <NavList/>
       </Drawer>

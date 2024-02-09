@@ -25,18 +25,19 @@ const note = {
 }
 const Form = () => {
 
-  const [showTextField, setshowTextField] = useState(false);
+  const [showTextField, setShowTextField] = useState(false);
   const [addNote, setAddNote] = useState({...note, id: uuid() })
 
   const { setNotes }= useContext(DataContext);
   const containerRef = useRef();
 
   const onTextAreaClick = () => {
-    setshowTextField(true)
+    setShowTextField(true)
     containerRef.current.style.minHeight = '70px'
   }
+
   const handleClickAway = () => {
-    setshowTextField(false)
+    setShowTextField(false)
     containerRef.current.style.minHeight = '30px'
 
     setAddNote({ ...note, id: uuid() })

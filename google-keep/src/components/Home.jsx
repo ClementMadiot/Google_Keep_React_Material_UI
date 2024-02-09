@@ -8,8 +8,8 @@ import Notes from './Notes/Notes';
 const Home = () => {
   return (
     <Box>
-    <SwipeDrawer/>
-    <Notes/>
+    <SwipeDrawer />
+    <Notes />
     </Box>
   );
 };

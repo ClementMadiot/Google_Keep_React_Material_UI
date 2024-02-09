@@ -12,7 +12,7 @@ const Header = styled(AppBar)`
 const Keep = styled(Typography)`
   color: #5F6368;
   font-size: 24px;
-  margin-left: 25px;
+  margin-left: 10px;
 `
 
 const HeaderBar = ({ open, handleDrawer }) => {
