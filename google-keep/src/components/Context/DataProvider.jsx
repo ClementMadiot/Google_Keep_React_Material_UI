@@ -7,7 +7,7 @@ const DataProvider = ({ children }) => {
 
   const [notes, setNotes] = useState([]);
   const [archiveNotes, setArchiveNotes] = useState([]);
-  const [deleteNotes, setDeleteNotes] = useState([]);
+  const [deletedNotes, setDeletedNotes] = useState([]);
   
   return (
     <DataContext.Provider value={{
@@ -15,8 +15,8 @@ const DataProvider = ({ children }) => {
       setNotes,
       archiveNotes,
       setArchiveNotes,
-      deleteNotes,
-      setDeleteNotes
+      deletedNotes,
+      setDeletedNotes
     }}>
       {children}
     </DataContext.Provider>
