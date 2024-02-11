@@ -21,7 +21,7 @@ const Archives = () => {
         <Grid container style={{ marginTop: 16 }}>
           {archiveNotes.map((archive) => (
             <Grid item>
-              <Archive key={archive} archive={archive} />
+              <Archive key={archive} note={archive} />
             </Grid>
           ))}
         </Grid>
