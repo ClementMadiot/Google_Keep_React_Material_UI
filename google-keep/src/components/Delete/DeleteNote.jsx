@@ -39,7 +39,9 @@ const DeleteNote = ({ note }) => {
       <CardActions>
         <Delete 
         fontSize="small" 
-        onClick={() => deleteNote(note)} />
+        onClick={() => deleteNote(note)} 
+        style={{ marginLeft: 'auto' }}
+        />
         <Restore
           fontSize="small"
           onClick={() => restoreNote(note)}
